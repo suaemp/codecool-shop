@@ -29,5 +29,17 @@ public class ProductService{
         return productRepository.findAllByProductCategory(category);
     }
 
+    public List<ProductCategory> getAllProductCategories() {
+        return productCategoryRepository.findAll();
+    }
+
+    public List<Product> getAllProducts() {
+        return productRepository.findAll();
+    }
+
+
 
 }
+
+
+

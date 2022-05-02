@@ -18,8 +18,11 @@ public class ProductController {
 
     @GetMapping("/")
     public String index(Model model) {
-        model.addAttribute("category", service.getProductCategory(1));
-        model.addAttribute("products", service.getProductsForCategory(1));
+        model.addAttribute("category", service.getAllProductCategories());
+        System.out.println(service.getAllProductCategories());
+//        model.addAttribute("products", service.getProductsForCategory(1));
+        model.addAttribute("products", service.getAllProducts());
+        System.out.println(service.getAllProducts());
         return "product/index";
     }
 }
