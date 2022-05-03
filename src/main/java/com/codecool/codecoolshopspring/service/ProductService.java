@@ -37,7 +37,9 @@ public class ProductService{
         return productRepository.findAll();
     }
 
-
+//    public int productId() {
+//        return productCategoryRepository.find(Id);
+//    }
 
 }
 

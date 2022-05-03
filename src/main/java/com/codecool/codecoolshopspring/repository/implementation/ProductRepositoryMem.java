@@ -33,6 +33,7 @@ public class ProductRepositoryMem implements ProductRepository {
         data.remove(findById(id));
     }
 
+
     @Override
     public List<Product> findAll() {
         return data;
@@ -47,4 +48,5 @@ public class ProductRepositoryMem implements ProductRepository {
     public List<Product> findAllByProductCategory(ProductCategory productCategory) {
         return data.stream().filter(t -> t.getProductCategory().equals(productCategory)).collect(Collectors.toList());
     }
+
 }
