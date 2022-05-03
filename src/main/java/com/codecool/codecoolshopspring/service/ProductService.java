@@ -1,9 +1,11 @@
 package com.codecool.codecoolshopspring.service;
 
+import com.codecool.codecoolshopspring.model.Supplier;
 import com.codecool.codecoolshopspring.repository.ProductCategoryRepository;
 import com.codecool.codecoolshopspring.repository.ProductRepository;
 import com.codecool.codecoolshopspring.model.Product;
 import com.codecool.codecoolshopspring.model.ProductCategory;
+import com.codecool.codecoolshopspring.repository.SupplierRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,11 +15,14 @@ import java.util.List;
 public class ProductService{
     private ProductRepository productRepository;
     private ProductCategoryRepository productCategoryRepository;
+    private SupplierRepository supplierRepository;
+
 
     @Autowired
-    public ProductService(ProductRepository productRepository, ProductCategoryRepository productCategoryRepository) {
+    public ProductService(ProductRepository productRepository, ProductCategoryRepository productCategoryRepository, SupplierRepository supplierRepository) {
         this.productRepository = productRepository;
         this.productCategoryRepository = productCategoryRepository;
+        this.supplierRepository = supplierRepository;
     }
 
     public ProductCategory getProductCategory(int categoryId){
@@ -37,9 +42,18 @@ public class ProductService{
         return productRepository.findAll();
     }
 
-//    public int productId() {
-//        return productCategoryRepository.find(Id);
-//    }
+    public List<Supplier> getAllSuppliers() {
+        return supplierRepository.findAll();
+    }
+
+    public List<Product> getAllProductsBySupplier(int supplierId) {
+        Supplier supplier = supplierRepository.findById(supplierId).orElseThrow();
+        return productRepository.findAllBySupplier(supplier);
+    }
+
+    public Supplier getProductSupplier(int supplierId) {
+        return supplierRepository.findById(supplierId).orElseThrow();
+    }
 
 }
 

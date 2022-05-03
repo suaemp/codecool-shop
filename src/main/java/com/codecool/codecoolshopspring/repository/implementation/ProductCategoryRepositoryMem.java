@@ -35,7 +35,4 @@ public class ProductCategoryRepositoryMem implements ProductCategoryRepository {
         return data;
     }
 
-//    public int findId(){
-//        return data.stream().filter(t->t.getId() == ).findFirst();
-//    }
 }

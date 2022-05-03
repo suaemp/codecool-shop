@@ -1,8 +1,8 @@
 package com.codecool.codecoolshopspring.controller;
 
-import com.codecool.codecoolshopspring.model.Product;
 import com.codecool.codecoolshopspring.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,8 +21,11 @@ public class ProductController {
     @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("title", "Codecool Shop");
-        model.addAttribute("category", service.getAllProductCategories());
+        model.addAttribute("categories", service.getAllProductCategories());
         model.addAttribute("products", service.getAllProducts());
+
+        model.addAttribute("suppliers", service.getAllSuppliers());
+        System.out.println(service.getAllProducts());
 
         return "product/index";
     }
@@ -53,10 +56,27 @@ public class ProductController {
 //        }
 //    }
     @GetMapping("/products/{categoryId}")
+
     public String getFilteredProducts(@PathVariable String categoryId, Model model) {
-        model.addAttribute("choosenCategory", service.getProductCategory(Integer.parseInt(categoryId)));
-        model.addAttribute("allCategories", service.getAllProductCategories());
+        model.addAttribute("categoryName", service.getProductCategory(Integer.parseInt(categoryId)).getName());
+
+//        model.addAttribute("choosenCategory", service.getProductCategory(Integer.parseInt(categoryId)));
+        model.addAttribute("categories", service.getAllProductCategories());
         model.addAttribute("products", service.getProductsForCategory(Integer.parseInt(categoryId)));
-        return "product/tablet";
+
+        return "product/filteredProducts";
     }
+
+    @GetMapping("/products/{name}/{supplier}")
+    public String getFilteredProductBySupplier(@PathVariable int supplier, Model model) {
+        model.addAttribute("supplierName", service.getProductSupplier(supplier).getName());
+
+//        model.addAttribute("chosenSupplier", service.getProductSupplier(supplier));
+        model.addAttribute("categories", service.getAllProductCategories());
+        model.addAttribute("suppliers", service.getAllSuppliers());
+        model.addAttribute("products", service.getAllProductsBySupplier(supplier));
+
+        return "product/filteredProducts";
+    }
+
 }
