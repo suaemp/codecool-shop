@@ -1,11 +1,13 @@
 package com.codecool.codecoolshopspring;
 
+import com.codecool.codecoolshopspring.model.Order;
 import com.codecool.codecoolshopspring.repository.ProductCategoryRepository;
 import com.codecool.codecoolshopspring.repository.ProductRepository;
 import com.codecool.codecoolshopspring.repository.SupplierRepository;
 import com.codecool.codecoolshopspring.model.Product;
 import com.codecool.codecoolshopspring.model.ProductCategory;
 import com.codecool.codecoolshopspring.model.Supplier;
+import com.codecool.codecoolshopspring.repository.implementation.OrderRepository;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -17,11 +19,13 @@ public class Initializer {
     private final ProductRepository productRepository;
     private final ProductCategoryRepository productCategoryRepository;
     private final SupplierRepository supplierRepository;
+    private OrderRepository orderRepository;
 
-    public Initializer(ProductRepository productRepository, ProductCategoryRepository productCategoryRepository, SupplierRepository supplierRepository) {
+    public Initializer(ProductRepository productRepository, ProductCategoryRepository productCategoryRepository, SupplierRepository supplierRepository, OrderRepository orderRepository) {
         this.productRepository = productRepository;
         this.productCategoryRepository = productCategoryRepository;
         this.supplierRepository = supplierRepository;
+        this.orderRepository = orderRepository;
     }
 
     @PostConstruct
@@ -41,9 +45,16 @@ public class Initializer {
         productCategoryRepository.save(laptop);
 
         //setting up products and printing it
-        productRepository.save(new Product("Amazon Fire", new BigDecimal("49.9"), "USD", "Fantastic price. Large content ecosystem. Good parental controls. Helpful technical support.", tablet, amazon));
+//        Product product = productRepository.save(new Product("Amazon Fire", new BigDecimal("49.9"), "USD", "Fantastic price. Large content ecosystem. Good parental controls. Helpful technical support.", tablet, amazon));
+        Product product = new Product("Amazon Fire", new BigDecimal("49.9"), "USD", "Fantastic price. Large content ecosystem. Good parental controls. Helpful technical support.", tablet, amazon);
+        productRepository.save(product);
         productRepository.save(new Product("Lenovo IdeaPad Miix 700", new BigDecimal("479"), "USD", "Keyboard cover is included. Fanless Core m5 processor. Full-size USB ports. Adjustable kickstand.", tablet, lenovo));
         productRepository.save(new Product("Amazon Fire HD 8", new BigDecimal("89"), "USD", "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", tablet, amazon));
         productRepository.save(new Product("Macbook Pro", new BigDecimal("500"), "USD", "The MacBook Pro is a line of Macintosh notebook computers by by Apple Inc. Introduced in January 2006, it is the higher-end model of the MacBook family, sitting above the consumer-focused MacBook Air. It is currently sold with 13-inch, 14-inch, and 16-inch screens, all using variants of the Apple-designed M1 system on a chip.", laptop, apple));
+
+        Order order = new Order(1);
+
+        order.addToCart(product);
+        orderRepository.save(order);
     }
 }

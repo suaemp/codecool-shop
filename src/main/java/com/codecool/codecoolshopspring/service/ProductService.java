@@ -55,6 +55,12 @@ public class ProductService{
         return supplierRepository.findById(supplierId).orElseThrow();
     }
 
+    public Product getProductById(int productId) {
+        return productRepository.findById(productId).orElseThrow();
+
+    }
+
+
 }
 
 

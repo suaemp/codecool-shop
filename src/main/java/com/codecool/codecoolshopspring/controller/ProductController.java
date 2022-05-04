@@ -1,8 +1,9 @@
 package com.codecool.codecoolshopspring.controller;
 
+import com.codecool.codecoolshopspring.model.Product;
+import com.codecool.codecoolshopspring.service.OrderService;
 import com.codecool.codecoolshopspring.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,10 +13,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class ProductController {
 
     private ProductService service;
+    private OrderService orderService;
 
     @Autowired
-    public ProductController(ProductService service) {
+    public ProductController(ProductService service, OrderService order) {
         this.service = service;
+        this.orderService = order;
     }
 
     @GetMapping("/")
@@ -25,7 +28,7 @@ public class ProductController {
         model.addAttribute("products", service.getAllProducts());
 
         model.addAttribute("suppliers", service.getAllSuppliers());
-        System.out.println(service.getAllProducts());
+//        System.out.println(service.getAllProducts());
 
         return "product/index";
     }
@@ -49,8 +52,24 @@ public class ProductController {
         model.addAttribute("categories", service.getAllProductCategories());
         model.addAttribute("suppliers", service.getAllSuppliers());
         model.addAttribute("products", service.getAllProductsBySupplier(supplier));
-
+//        model.addAttribute("product", new Product("tablet","ahbsahbd"));
         return "product/filteredProducts";
     }
+
+    @GetMapping("/shoppingCart")
+    public String addToCart(Model model) {
+        model.addAttribute("order", orderService.getOrder(1));
+        System.out.println(orderService.getOrder(1));
+        return "product/shoppingCart";
+    }
+
+    @GetMapping("/add_to_cart/{productId}")
+    public String add(@PathVariable int productId, Model model){
+        Product product = service.getProductById(productId);
+        orderService.getOrder(1).addToCart(product);
+
+        return "redirect:/";
+    }
+
 
 }

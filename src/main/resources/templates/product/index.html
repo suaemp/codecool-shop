@@ -40,7 +40,6 @@
 
     <div>
         <div class="card-header">PRODUCT CATEGORIES</div>
-
         <div class="list-group" th:each="category: ${categories}">
             <a th:href="@{'/products/' + ${category.id}}" class="list-group-item list-group-item-action"
                th:text="${category.name}+'s'">
@@ -71,7 +70,8 @@
                         <p class="lead" th:text="${prod.getPrice()}">100 USD</p>
                     </div>
                     <div class="card-text">
-                        <a class="btn btn-success" href="#">Add to cart</a>
+
+                        <a class="btn btn-success" th:href="@{'/add_to_cart/' +${prod.id}}">Add to cart</a>
                     </div>
                 </div>
             </div>
