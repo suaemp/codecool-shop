@@ -56,20 +56,22 @@ public class ProductController {
         return "product/filteredProducts";
     }
 
-    @GetMapping("/shoppingCart")
-    public String addToCart(Model model) {
-        model.addAttribute("order", orderService.getOrder(1));
-        System.out.println(orderService.getOrder(1));
-        return "product/shoppingCart";
-    }
-
     @GetMapping("/add_to_cart/{productId}")
-    public String add(@PathVariable int productId, Model model){
+    public String add(@PathVariable int productId, Model model) {
+        System.out.println(orderService.getOrder(1).getShoppingCartProducts());
         Product product = service.getProductById(productId);
+//        System.out.println(service.getProductById(productId));
         orderService.getOrder(1).addToCart(product);
+        System.out.println(orderService.getOrder(1).getShoppingCartProducts());
 
         return "redirect:/";
     }
 
+    @GetMapping("/shoppingCart")
+    public String addToCart(Model model) {
+        model.addAttribute("order", orderService.getOrder(1).getShoppingCartProducts());
+        System.out.println(orderService.getOrder(1));
+        return "product/shoppingCart";
+    }
 
 }

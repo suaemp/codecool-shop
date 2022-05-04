@@ -20,17 +20,17 @@
                 <div class="row">
                     <div class="col-md-12 col-lg-8">
                         <div class="items">
-                            <div class="product">
+                            <div class="product" th:each="product: ${order}">
                                 <div class="row">
                                     <div class="col-md-3">
-                                        <img class="img-fluid mx-auto d-block image" src="assets/img/image.jpg">
+                                        <img class="img-fluid mx-auto d-block image" th:src="@{'../../img/product_' + ${product.id} + '.jpg'}">
                                     </div>
                                     <div class="col-md-8">
                                         <div class="info">
                                             <div class="row">
                                                 <div class="col-md-5 product-name">
                                                     <div class="product-name">
-                                                        <a href="#">Lorem Ipsum dolor</a>
+                                                        <a href="#"  th:text="${product.name}">Lorem Ipsum dolor</a>
                                                         <div class="product-info">
                                                             <div>Display: <span class="value">5 inch</span></div>
                                                             <div>RAM: <span class="value">4GB</span></div>
