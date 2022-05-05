@@ -26,21 +26,25 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <!-- End of Bootstrap components -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet"
+          type="text/css"/>
 
     <link rel="stylesheet" type="text/css" href="css/custom.css"/>
+
 </head>
 
 <body>
 
 <div class="jumbotron text-center">
     <h1>Codecool Shop</h1>
+    <a th:href="@{'/shoppingCart'}" id="shopping-cart" onmouseover="showModalWindow(this)"><img src="../../img/shopping-cart.png"><span
+            class="badge badge-secondary" id="badge"><span th:text="${cartSize}" class="badge-value">4</span></span></a>
 </div>
 
 <div class="container">
 
     <div>
         <div class="card-header">PRODUCT CATEGORIES</div>
-
         <div class="list-group" th:each="category: ${categories}">
             <a th:href="@{'/products/' + ${category.id}}" class="list-group-item list-group-item-action"
                th:text="${category.name}+'s'">
@@ -71,7 +75,9 @@
                         <p class="lead" th:text="${prod.getPrice()}">100 USD</p>
                     </div>
                     <div class="card-text">
-                        <a class="btn btn-success" href="#">Add to cart</a>
+
+                        <a class="btn btn-success" id="add-to-cart" onclick="myFunction()"
+                           th:href="@{'/add_to_cart/' +${prod.id}}">Add to cart</a>
                     </div>
                 </div>
             </div>
@@ -81,8 +87,18 @@
 </div>
 
 <div th:replace="footer.html :: copy"></div>
-<script>
 
+<script>
+    function myFunction() {
+        let element = document.getElementById("badge");
+        element.classList.remove("badge-secondary")
+        element.classList.add("badge-danger");
+    }
+
+    function showModalWindow(x) {
+        console.log("widać");
+
+    }
 </script>
 </body>
 </html>
