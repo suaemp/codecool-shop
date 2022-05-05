@@ -21,4 +21,8 @@ public class OrderService {
         return orderRepository.findById(id).orElseThrow();
     }
 
+//    public int getOrderSize(int id) {
+//        return orderRepository.orderSize(id);
+//    }
+
 }

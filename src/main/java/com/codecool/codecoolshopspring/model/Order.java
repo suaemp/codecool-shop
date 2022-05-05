@@ -28,4 +28,8 @@ public class Order {
     public void setId(int id) {
         this.id = id;
     }
+
+    public int getShoppingCartSize() {
+        return shoppingCartProducts.size();
+    }
 }

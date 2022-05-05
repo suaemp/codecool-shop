@@ -28,7 +28,9 @@ public class ProductController {
         model.addAttribute("products", service.getAllProducts());
 
         model.addAttribute("suppliers", service.getAllSuppliers());
-//        System.out.println(service.getAllProducts());
+
+        int shoppingCartSize = orderService.getOrder(1).getShoppingCartSize();
+        model.addAttribute("cartSize", shoppingCartSize);
 
         return "product/index";
     }
@@ -52,17 +54,15 @@ public class ProductController {
         model.addAttribute("categories", service.getAllProductCategories());
         model.addAttribute("suppliers", service.getAllSuppliers());
         model.addAttribute("products", service.getAllProductsBySupplier(supplier));
-//        model.addAttribute("product", new Product("tablet","ahbsahbd"));
+
         return "product/filteredProducts";
     }
 
     @GetMapping("/add_to_cart/{productId}")
     public String add(@PathVariable int productId, Model model) {
-        System.out.println(orderService.getOrder(1).getShoppingCartProducts());
         Product product = service.getProductById(productId);
-//        System.out.println(service.getProductById(productId));
+
         orderService.getOrder(1).addToCart(product);
-        System.out.println(orderService.getOrder(1).getShoppingCartProducts());
 
         return "redirect:/";
     }
@@ -70,7 +70,7 @@ public class ProductController {
     @GetMapping("/shoppingCart")
     public String addToCart(Model model) {
         model.addAttribute("order", orderService.getOrder(1).getShoppingCartProducts());
-        System.out.println(orderService.getOrder(1));
+
         return "product/shoppingCart";
     }
 
