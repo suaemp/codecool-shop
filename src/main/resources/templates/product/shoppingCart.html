@@ -12,6 +12,7 @@
 <body>
 <div class="jumbotron text-center">
     <a href="/"><h1>Codecool Shop</h1></a>
+
 </div>
 <main class="page">
     <section class="shopping-cart dark">
@@ -69,13 +70,17 @@
                     <div class="col-md-12 col-lg-4">
                         <div class="summary">
                             <h3>Summary</h3>
-                            <div class="summary-item"><span class="text">Subtotal</span><span class="price">$360</span>
+                            <div class="summary-item">
+                                <span class="text">Subtotal: </span>
+                                <span class="price" th:text="${sum} + ' USD'">$360</span>
                             </div>
-                            <div class="summary-item"><span class="text">Discount</span><span class="price">$0</span>
+                            <div class="summary-item">
+                                <span class="text">Discount</span>
+                                <span class="price">$0</span>
                             </div>
-                            <div class="summary-item"><span class="text">Shipping</span><span class="price">$0</span>
+                            <div class="summary-item"><span class="text">Shipping</span><span class="price">0 USD</span>
                             </div>
-                            <div class="summary-item"><span class="text">Total</span><span class="price">$360</span>
+                            <div class="summary-item"><span class="text">Total</span><span class="price">360 USD</span>
                             </div>
                             <button type="button" class="btn btn-primary btn-lg btn-block">Checkout</button>
                         </div>
@@ -86,7 +91,5 @@
     </section>
 </main>
 </body>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-</body>
+
 </html>

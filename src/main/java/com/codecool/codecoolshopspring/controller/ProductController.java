@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.math.BigDecimal;
+
 @Controller
 public class ProductController {
 
@@ -44,6 +46,8 @@ public class ProductController {
 
         model.addAttribute("products", service.getProductsForCategory(categoryId));
 
+        int shoppingCartSize = orderService.getOrder(1).getShoppingCartSize();
+        model.addAttribute("cartSize", shoppingCartSize);
         return "product/filteredProducts";
     }
 
@@ -54,6 +58,9 @@ public class ProductController {
         model.addAttribute("categories", service.getAllProductCategories());
         model.addAttribute("suppliers", service.getAllSuppliers());
         model.addAttribute("products", service.getAllProductsBySupplier(supplier));
+
+        int shoppingCartSize = orderService.getOrder(1).getShoppingCartSize();
+        model.addAttribute("cartSize", shoppingCartSize);
 
         return "product/filteredProducts";
     }
@@ -70,6 +77,9 @@ public class ProductController {
     @GetMapping("/shoppingCart")
     public String addToCart(Model model) {
         model.addAttribute("order", orderService.getOrder(1).getShoppingCartProducts());
+
+        BigDecimal totalOrderAmount = orderService.getOrder(1).amountOfOrder();
+        model.addAttribute("sum", totalOrderAmount);
 
         return "product/shoppingCart";
     }
