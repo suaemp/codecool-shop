@@ -11,7 +11,6 @@ public class Order {
 
     public Order(int id) {
         this.id = id;
-        this.setSum(BigDecimal.valueOf(0));
         this.shoppingCartProducts = new ArrayList<>();
 
     }
@@ -23,10 +22,6 @@ public class Order {
 
     public void addToCart(Product product) {
         shoppingCartProducts.add(product);
-    }
-
-    public void setSum(BigDecimal sum) {
-        this.sum = sum;
     }
 
     public int getId() {
@@ -42,6 +37,7 @@ public class Order {
     }
 
     public BigDecimal amountOfOrder() {
+        sum = BigDecimal.valueOf(0);
         for (Product product : shoppingCartProducts) {
             sum = sum.add(product.getDefaultPrice());
         }

@@ -74,14 +74,5 @@ public class ProductController {
         return "redirect:/";
     }
 
-    @GetMapping("/shoppingCart")
-    public String addToCart(Model model) {
-        model.addAttribute("order", orderService.getOrder(1).getShoppingCartProducts());
-
-        BigDecimal totalOrderAmount = orderService.getOrder(1).amountOfOrder();
-        model.addAttribute("sum", totalOrderAmount);
-
-        return "product/shoppingCart";
-    }
 
 }
