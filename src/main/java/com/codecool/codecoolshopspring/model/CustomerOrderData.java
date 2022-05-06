@@ -1,6 +1,6 @@
 package com.codecool.codecoolshopspring.model;
 
-public class customerOrderData {
+public class CustomerOrderData {
     private int id;
     private int orderId;
     private String name;
@@ -10,15 +10,18 @@ public class customerOrderData {
     private String city;
     private String country;
 
-    public customerOrderData(int id, int orderId, String name, String surname, String email, int number, String city, String country) {
+    public CustomerOrderData(int id, String name, String surname, String email, int number, String city, String country) {
         this.id = id;
-        this.orderId = orderId;
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.number = number;
         this.city = city;
         this.country = country;
+    }
+
+    public CustomerOrderData(int orderId) {
+        this.orderId = orderId;
     }
 
     public int getId() {
