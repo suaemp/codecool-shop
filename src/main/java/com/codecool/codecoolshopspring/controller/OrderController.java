@@ -45,7 +45,12 @@ public class OrderController {
     @PostMapping("/add_customer_details")
     public String addCustomerDetails(@ModelAttribute CustomerOrderData customerData) {
         customerOrderService.addCustomerDetails(customerData);
-        System.out.println(customerOrderService.);
+//        System.out.println(customerOrderService);
         return "redirect:/";
+    }
+
+    @GetMapping("/payment")
+    public String paymentPage() {
+        return "payment.html";
     }
 }
