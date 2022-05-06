@@ -1,18 +1,7 @@
-.glyphicon {
-    margin-right: 5px;
-}
-
-.thumbnail {
-    margin-bottom: 20px;
+* {
+    margin: 0;
     padding: 0;
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
-    border-radius: 0;
-}
-
-
-.thumbnail img {
-    margin-top: 10px;
+    box-sizing: border-box;
 }
 
 .item.list-group-item {
@@ -57,6 +46,11 @@
 
 .list-group-item-text {
     margin: 0 0 11px;
+}
+
+header.jumbotron {
+    padding: 2rem 2rem !important;
+    margin-bottom: 1rem !important;
 }
 
 .jumbotron > a {
@@ -136,7 +130,6 @@
 }
 
 .shopping-cart .items .product .info .price-value {
-    /*padding-top: 30px;*/
     text-align: center;
     font-weight: bold;
     font-size: 20px;
@@ -153,6 +146,7 @@
     background-color: #f7fbff;
     height: 100%;
     padding: 10px;
+    margin-bottom: 20px;
 }
 
 .shopping-cart .summary h3 {
@@ -209,6 +203,7 @@
 }
 
 .footer {
+    padding: 1rem;
     text-align: center;
 }
 
@@ -225,11 +220,60 @@
 
 }
 
+.badge-value {
+    text-align: center;
+}
+
 #shopping-cart {
     display: block;
     float: right
 }
 
-.badge-value {
-    text-align: center;
+.wrapper {
+    padding: 10px 35px;
+}
+
+#details {
+    padding: 20px 50px;
+}
+
+input {
+    border: none;
+    outline: none;
+}
+
+.form-group .d-flex {
+    border: 1px solid #ddd;
+}
+
+.form-group .d-flex input {
+    width: 95%;
+}
+
+.form-group .d-flex:hover {
+    color: #000;
+    cursor: pointer;
+    border: 1px solid #008000;
+}
+
+.wrapper .row + div.text-muted {
+    font-size: 0.9rem;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+
+    .wrapper div.h5.large, .wrapper .row + div.text-muted {
+        display: none;
+    }
+
+    .mobile.h5, #mobile {
+        display: block;
+    }
+}
+
+
+.btn-primary {
+    display: inline-block !important;
+    float: right !important;
 }
