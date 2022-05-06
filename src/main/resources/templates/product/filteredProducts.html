@@ -29,11 +29,12 @@
 
 </head>
 <body>
-<div class="jumbotron text-center">
+<header class="jumbotron text-center">
     <a href="/"><h1>Codecool Shop</h1></a>
-    <a th:href="@{'/shoppingCart'}" id="shopping-cart"><img src="../../img/shopping-cart.png"><span
+    <a th:href="@{'/shoppingCart'}" id="shopping-cart" onmouseover="showModalWindow(this)"><img
+            src="../../img/shopping-cart.png"><span
             class="badge badge-secondary" id="badge"><span th:text="${cartSize}" class="badge-value">4</span></span></a>
-</div>
+</header>
 
 <div class="container">
     <div>

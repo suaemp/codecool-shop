@@ -10,10 +10,10 @@
 </head>
 
 <body>
-<div class="jumbotron text-center">
+<header class="jumbotron text-center">
     <a href="/"><h1>Codecool Shop</h1></a>
 
-</div>
+</header>
 <main class="page">
     <section class="shopping-cart dark">
         <div class="container">
@@ -82,7 +82,7 @@
                             </div>
                             <div class="summary-item"><span class="text">Total</span><span class="price">360 USD</span>
                             </div>
-                            <button type="button" class="btn btn-primary btn-lg btn-block">Checkout</button>
+                            <a th:href="@{'/checkout'}" class="btn btn-primary btn-lg btn-block">Checkout</a>
                         </div>
                     </div>
                 </div>
@@ -90,6 +90,7 @@
         </div>
     </section>
 </main>
+<div th:replace="footer.html :: copy"></div>
 </body>
 
 </html>

@@ -25,6 +25,11 @@ public class OrderController {
         BigDecimal totalOrderAmount = orderService.getOrder(1).amountOfOrder();
         model.addAttribute("sum", totalOrderAmount);
 
-        return "product/shoppingCart";
+        return "shoppingCart.html";
+    }
+
+    @GetMapping("/checkout")
+    public String checkoutPage() {
+        return "checkout.html";
     }
 }
