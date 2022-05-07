@@ -1,9 +1,14 @@
 package com.codecool.codecoolshopspring.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@Setter
 public class Order {
     private int id;
     private BigDecimal sum;
@@ -15,21 +20,8 @@ public class Order {
 
     }
 
-    public List<Product> getShoppingCartProducts() {
-        return shoppingCartProducts;
-    }
-
-
     public void addToCart(Product product) {
         shoppingCartProducts.add(product);
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public int getShoppingCartSize() {

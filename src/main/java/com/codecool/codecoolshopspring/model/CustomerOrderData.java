@@ -6,16 +6,16 @@ public class CustomerOrderData {
     private String name;
     private String surname;
     private String email;
-    private int number;
+    private String phoneNumber;
     private String city;
     private String country;
 
-    public CustomerOrderData(int id, String name, String surname, String email, int number, String city, String country) {
+    public CustomerOrderData(int id, String name, String surname, String email, String phoneNumber, String city, String country) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.email = email;
-        this.number = number;
+        this.phoneNumber = phoneNumber;
         this.city = city;
         this.country = country;
     }
@@ -44,8 +44,8 @@ public class CustomerOrderData {
         return email;
     }
 
-    public int getNumber() {
-        return number;
+    public String getNumber() {
+        return phoneNumber;
     }
 
     public String getCity() {
@@ -76,8 +76,8 @@ public class CustomerOrderData {
         this.email = email;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public void setNumber(String number) {
+        this.phoneNumber = number;
     }
 
     public void setCity(String city) {

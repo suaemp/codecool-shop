@@ -1,19 +1,16 @@
 package com.codecool.codecoolshopspring.service;
 
 import com.codecool.codecoolshopspring.model.Order;
-import com.codecool.codecoolshopspring.model.Product;
-import com.codecool.codecoolshopspring.repository.implementation.OrderRepository;
+import com.codecool.codecoolshopspring.repository.implementation.OrderRepositoryMem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-
 @Component
 public class OrderService {
-    private OrderRepository orderRepository;
+    private final OrderRepositoryMem orderRepository;
 
     @Autowired
-    public OrderService(OrderRepository orderRepository) {
+    public OrderService(OrderRepositoryMem orderRepository) {
         this.orderRepository = orderRepository;
     }
 

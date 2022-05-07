@@ -2,12 +2,13 @@ package com.codecool.codecoolshopspring.repository.implementation;
 
 import com.codecool.codecoolshopspring.repository.SupplierRepository;
 import com.codecool.codecoolshopspring.model.Supplier;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
+@Primary
 @Component
 public class SupplierRepositoryMem implements SupplierRepository {
 

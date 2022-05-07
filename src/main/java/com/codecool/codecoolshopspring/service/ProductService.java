@@ -13,9 +13,9 @@ import java.util.List;
 
 @Component
 public class ProductService{
-    private ProductRepository productRepository;
-    private ProductCategoryRepository productCategoryRepository;
-    private SupplierRepository supplierRepository;
+    private final ProductRepository productRepository;
+    private final ProductCategoryRepository productCategoryRepository;
+    private final SupplierRepository supplierRepository;
 
 
     @Autowired
