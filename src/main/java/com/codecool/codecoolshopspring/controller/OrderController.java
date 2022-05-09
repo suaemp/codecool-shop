@@ -36,7 +36,6 @@ public class OrderController {
 
     @GetMapping("/checkout")
     public String checkoutPage(Model model) {
-        System.out.println("weszło do checkout");
         model.addAttribute("customerData", new CustomerOrderData());
 
         return "checkout";
@@ -45,6 +44,7 @@ public class OrderController {
     @PostMapping("/checkout")
     public String addCustomerDetails(@ModelAttribute CustomerOrderData customerData) {
         customerOrderService.addCustomerDetails(customerData);
+
         return "redirect:payment";
     }
 

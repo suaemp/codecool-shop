@@ -20,8 +20,5 @@ public class CustomerOrderData {
     private String streetName;
     private String country;
 
-//    public CustomerOrderData(int orderId) {
-//        this.orderId = orderId;
-//    }
 
 }

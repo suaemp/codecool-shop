@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Consumer;
 
 @Getter
 @Setter
@@ -36,8 +37,7 @@ public class Order {
     }
 
     public int getShoppingCartSize() {
-
-        return customerOrder.size();
+        return customerOrder.values().stream().mapToInt(quantity -> quantity).sum();
     }
 
     public BigDecimal amountOfOrder() {
