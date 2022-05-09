@@ -1,28 +1,27 @@
 package com.codecool.codecoolshopspring.model;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class CustomerOrderData {
     private int id;
-    private int orderId;
     private String name;
     private String surname;
     private String email;
     private String phoneNumber;
     private String city;
+    private String zipCode;
+    private String streetName;
     private String country;
 
-    public CustomerOrderData(int orderId) {
-        this.orderId = orderId;
-    }
+//    public CustomerOrderData(int orderId) {
+//        this.orderId = orderId;
+//    }
 
 }

@@ -3,7 +3,6 @@ package com.codecool.codecoolshopspring.repository.implementation;
 import com.codecool.codecoolshopspring.model.CustomerOrderData;
 import org.springframework.stereotype.Repository;
 
-import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,4 +17,5 @@ public class CustomerOrderRepository {
     public List<CustomerOrderData> getAll() {
         return customerDetails;
     }
+
 }

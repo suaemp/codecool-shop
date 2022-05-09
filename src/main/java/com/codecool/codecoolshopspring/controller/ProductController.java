@@ -60,6 +60,7 @@ public class ProductController {
         model.addAttribute("products", service.getAllProductsBySupplier(supplier));
 
         int shoppingCartSize = orderService.getOrder(1).getShoppingCartSize();
+        System.out.println(shoppingCartSize + "wielkość koszyka");
         model.addAttribute("cartSize", shoppingCartSize);
 
         return "product/filteredProducts";

@@ -46,64 +46,65 @@
 
             <div id="details" class="bg-white rounded">
                 <div class="mobile h5">Billing and Shopping Address</div>
-                <form>
+                <form action="#" th:action="@{/checkout}" th:object="${customerData}" method="post">
                     <div class="form-group">
                         <label>Name:</label>
                         <div class="d-flex jusify-content-start align-items-center rounded p-2">
-                            <input name="name" class="text-muted" value="Name">
+                            <input name="name" class="text-muted" value="Name" type="text" th:field="*{name}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Surname:</label>
                         <div class="d-flex jusify-content-start align-items-center rounded p-2">
-                            <input class="text-muted" value="Surname">
+                            <input class="text-muted" value="Surname" type="text" th:field="*{surname}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="email">Enter your email:</label>
                         <div class="d-flex jusify-content-start align-items-center rounded p-2">
-                            <input type="email" id="email" name="email" class="text-muted" value="Email">
+                            <input type="email" id="email" name="email" class="text-muted" value="Email" th:field="*{email}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Phone number:</label>
                         <div class="d-flex jusify-content-start align-items-center rounded p-2">
-                            <input type="text" class="text-muted" value="Phone number">
+                            <input class="text-muted" value="Phone number" type="text" th:field="*{phoneNumber}">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label>City:</label>
                         <div class="d-flex jusify-content-start align-items-center rounded p-2">
-                            <input type="text" class="text-muted" value="City">
+                            <input class="text-muted" value="City" type="text" th:field="*{city}">
 
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Zip code:</label>
                         <div class="d-flex jusify-content-start align-items-center rounded p-2">
-                            <input type="text" value="43300" class="text-muted">
+                            <input value="43300" class="text-muted" type="text" th:field="*{zipCode}">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Address:</label>
+                        <label>Street name:</label>
                         <div class="d-flex jusify-content-start align-items-center rounded p-2">
-                            <input type="text" class="text-muted" value="Street">
+                            <input class="text-muted" value="Street" type="text" th:field="*{streetName}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Country:</label>
                         <div class="d-flex jusify-content-start align-items-center rounded p-2">
-                            <input type="text" class="text-muted" value="Country">
+                            <input class="text-muted" value="Country" type="text" th:field="*{country}">
                         </div>
                     </div>
-                </form>
-                <div>
-                    <a class="btn btn-success" id="add-to-cart"
-                       th:href="@{'/shoppingCart'}">Back to shopping cart</a>
+                    <div>
+                        <a class="btn btn-success" id="add-to-cart"
+                           th:href="@{'/shoppingCart'}">Back to shopping cart</a>
 
-                    <a th:href="@{'/payment'}" class="btn btn-primary">Pay now!</a>
-                </div>
+                       <input class="btn btn-primary" type="submit" value="Pay now!"/>
+                    </div>
+                </form>
+
             </div>
 
         </div>

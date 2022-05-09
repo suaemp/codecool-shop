@@ -5,6 +5,7 @@ import com.codecool.codecoolshopspring.repository.implementation.CustomerOrderRe
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Random;
 
 @Service
@@ -23,6 +24,10 @@ public class CustomerOrderService {
         customerData.setId(new Random().nextInt());
         customerOrderRepository.saveUserData(customerData);
 
+    }
+
+    public List<CustomerOrderData> findAll() {
+        return customerOrderRepository.getAll();
     }
 
 
