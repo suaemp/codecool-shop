@@ -8,13 +8,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Consumer;
 
 @Getter
 @Setter
 public class Order {
     private int id;
-    private BigDecimal sum;
     private Map<Product, Integer> customerOrder;
     private List<Product> shoppingCartProducts;
     private CustomerOrderData customerOrderData;
@@ -27,8 +25,6 @@ public class Order {
     }
 
     public void addToCart(Product product) {
-//        shoppingCartProducts.add(product);
-
         if (customerOrder.containsKey(product)) {
             customerOrder.put(product, customerOrder.get(product) + 1);
         } else {
@@ -41,9 +37,11 @@ public class Order {
     }
 
     public BigDecimal amountOfOrder() {
-        sum = BigDecimal.valueOf(0);
-        for (Product product : shoppingCartProducts) {
-            sum = sum.add(product.getDefaultPrice());
+        BigDecimal sum = BigDecimal.valueOf(0);
+        for (Product product : customerOrder.keySet()) {
+            BigDecimal itemCost = product.getDefaultPrice().multiply(BigDecimal.valueOf(customerOrder.get(product)));
+            sum = sum.add(itemCost);
+
         }
         return sum;
     }
