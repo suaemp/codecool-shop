@@ -38,7 +38,7 @@
 
 <header class="jumbotron text-center">
     <h1>Codecool Shop</h1>
-    <a th:href="@{'/shoppingCart'}" id="shopping-cart" onmouseover="showModalWindow(this)"><img
+    <a th:href="@{'/shoppingCart'}" id="shopping-cart"><img
             src="../../img/shopping-cart.png"><span
             class="badge badge-secondary" id="badge"><span th:text="${cartSize}" class="badge-value">4</span></span></a>
 </header>
@@ -78,14 +78,14 @@
                     </div>
                     <div class="card-text">
 
-                        <a class="btn btn-success" id="add-to-cart" onclick="myFunction()"
+                        <a class="btn btn-success" id="add-to-cart"
                            th:href="@{'/add_to_cart/' +${prod.id}}">Add to cart</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-<button id="nowyButton">TUTAJ</button>
+    <button id="nowyButton">TUTAJ</button>
 </div>
 
 <div th:replace="footer.html :: copy"></div>

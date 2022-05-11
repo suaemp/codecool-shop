@@ -27,3 +27,16 @@ window.onload = function () {
     })
 };
 
+
+function changeBudgeColor() {
+    let element = document.getElementById("badge");
+    element.classList.remove("badge-secondary")
+    console.log("WESZŁO");
+    element.classList.add("badge-danger");
+}
+
+const addToCart = document.getElementsByClassName("btn-success");
+for (let i = 0; i < addToCart.length; i++) {
+    addToCart[i].addEventListener('click', changeBudgeColor)
+}
+;
