@@ -30,6 +30,7 @@
           type="text/css"/>
 
     <link rel="stylesheet" type="text/css" href="css/custom.css"/>
+    <script type="module" src="/js/nowy.js" defer></script>
 
 </head>
 
@@ -84,23 +85,11 @@
             </div>
         </div>
     </div>
-
+<button id="nowyButton">TUTAJ</button>
 </div>
 
 <div th:replace="footer.html :: copy"></div>
 
-<script>
-    function myFunction() {
-        let element = document.getElementById("badge");
-        element.classList.remove("badge-secondary")
-        element.classList.add("badge-danger");
-    }
 
-    function showModalWindow(x) {
-        console.log("widać");
-
-    }
-
-</script>
 </body>
 </html>
