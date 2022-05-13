@@ -1,5 +1,6 @@
 package com.codecool.codecoolshopspring.controller;
 
+import com.codecool.codecoolshopspring.model.Product;
 import com.codecool.codecoolshopspring.service.OrderService;
 import com.codecool.codecoolshopspring.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +17,12 @@ import java.util.List;
 public class RestControllerCos {
 
     private OrderService orderService;
+    protected ProductService service;
 
     @Autowired
-    public RestControllerCos(OrderService order) {
+    public RestControllerCos(OrderService order, ProductService service) {
         this.orderService = order;
+        this.service = service;
     }
 
     @GetMapping("/testuje")
@@ -36,6 +39,13 @@ public class RestControllerCos {
 
 
         return orderService.updatedOrder(1, productId, newQuantity);
+    }
+
+    @GetMapping("/add_to_cart/{productID}")
+    public void productID(@PathVariable int productID) {
+        Product product = service.getProductById(productID);
+        orderService.getOrder(1).addToCart(product);
+        System.out.println(productID);
     }
 
 }

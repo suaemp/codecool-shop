@@ -66,14 +66,14 @@ public class ProductController {
         return "product/filteredProducts";
     }
 
-    @GetMapping("/add_to_cart/{productId}")
-    public String add(@PathVariable int productId, Model model) {
-        Product product = service.getProductById(productId);
-
-        orderService.getOrder(1).addToCart(product);
-
-        return "redirect:/";
-    }
+//    @GetMapping("/add_to_cart/{productId}")
+//    public String add(@PathVariable int productId, Model model) {
+//        Product product = service.getProductById(productId);
+//
+//        orderService.getOrder(1).addToCart(product);
+//
+//        return "redirect:/";
+//    }
 
 
 }

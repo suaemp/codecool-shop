@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/custom.css"/>
-
 </head>
 
 <body>
@@ -52,10 +51,11 @@
                                                 </div>
                                                 <div class="col-md-3 quantity">
                                                     <label th:for="'quantity'+${productWithQuantity.key.id}">Quantity:</label>
-                                                    <input th:id="'quantity'+${productWithQuantity.key.id}"
+                                                    <input id="quantity"
                                                            type="number" value="1"
                                                            th:value="${productWithQuantity.value}"
                                                            class="form-control quantity-input quantityOfOrder">
+
                                                     <input type="hidden" id="productID"
                                                            th:value="${productWithQuantity.key.id}">
                                                 </div>
