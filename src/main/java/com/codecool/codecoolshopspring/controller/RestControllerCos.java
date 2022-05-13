@@ -6,6 +6,7 @@ import com.codecool.codecoolshopspring.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
@@ -42,10 +43,11 @@ public class RestControllerCos {
     }
 
     @GetMapping("/add_to_cart/{productID}")
-    public void productID(@PathVariable int productID) {
+    public Product productID(@PathVariable int productID) {
         Product product = service.getProductById(productID);
+
         orderService.getOrder(1).addToCart(product);
-        System.out.println(productID);
+        return product;
     }
 
 }

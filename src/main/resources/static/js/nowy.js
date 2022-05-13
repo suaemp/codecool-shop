@@ -41,38 +41,20 @@ for (let i = 0; i < addToCart.length; i++) {
 ;
 
 
-// window.onload = function () {
-//     let addToCartButton = document.getElementById("add-to-cart");
-//     let addToCartButtons = document.getElementsByClassName("btn-success");
-//
-//     for (let i = 0; i < addToCartButtons.length; i++) {
-//         console.log(addToCartButtons.item(i));
-//
-//         addToCartButtons.item(i).addEventListener('anchor', function (evt) {
-//             console.log("HELLO");
-//             fetch("/add_to_cart/" + addToCartButtons.item(i).name)
-//                 .then(product => product.json())
-//                 .then(valueJson => console.log(valueJson));
-//         })
-//     }
-//
-// }
-const addToCartButtons = document.getElementsByClassName("btn-success");
 window.onload = function () {
-    let addToCartButton = document.getElementById("add-to-cart");
-    console.log(addToCartButtons.item(1));
 
-    for (let i = 0; i < addToCartButtons.length; i++) {
-        addToCartButtons.item(i).addEventListener('click', addToCartAction);
+    let addToCart = document.getElementsByClassName("btn-success");
+
+    for (let i = 0; i < addToCart.length; i++) {
+
+        addToCart.item(i).addEventListener('click', async function (evt) {
+
+            await fetch("/add_to_cart/" + addToCart.item(i).name)
+                .then(product => product.json())
+                .then(valueJson => console.log(valueJson));
+        })
     }
 
 }
 
-function addToCartAction() {
-    for (let i = 0; i < addToCartButtons.length; i++) {
-        fetch("/add_to_cart/" + addToCartButtons.item(i).name)
-            .then(product => console.log(product))
-            .then(valueJson => console.log(valueJson));
-    }
-}
 
