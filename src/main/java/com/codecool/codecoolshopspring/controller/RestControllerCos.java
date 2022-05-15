@@ -6,7 +6,6 @@ import com.codecool.codecoolshopspring.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
@@ -31,8 +30,6 @@ public class RestControllerCos {
         List<Integer> cos = new ArrayList<>(Arrays.asList(1, 2, 3));
 
         return cos;
-
-
     }
 
     @GetMapping("/add_quantity/{productId}/{newQuantity}")

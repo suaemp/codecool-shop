@@ -3,7 +3,6 @@ package com.codecool.codecoolshopspring.service;
 import com.codecool.codecoolshopspring.model.Order;
 import com.codecool.codecoolshopspring.repository.implementation.OrderRepositoryMem;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;

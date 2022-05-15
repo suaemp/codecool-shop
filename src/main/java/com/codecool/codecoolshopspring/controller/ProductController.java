@@ -1,6 +1,5 @@
 package com.codecool.codecoolshopspring.controller;
 
-import com.codecool.codecoolshopspring.model.Product;
 import com.codecool.codecoolshopspring.service.OrderService;
 import com.codecool.codecoolshopspring.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,13 +8,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import java.math.BigDecimal;
-
 @Controller
 public class ProductController {
 
-    private ProductService service;
-    private OrderService orderService;
+    private final ProductService service;
+    private final OrderService orderService;
 
     @Autowired
     public ProductController(ProductService service, OrderService order) {

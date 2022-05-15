@@ -11,6 +11,7 @@
 
 window.onload = function () {
     let input = document.getElementById("quantity");
+    console.log(input);
     let hiddenInput = document.getElementById("productID");
     // let input = document.getElementsByClassName("quantityOfOrder");
 
@@ -27,34 +28,34 @@ window.onload = function () {
     })
 };
 
-
-function changeBudgeColor() {
-    let element = document.getElementById("badge");
-    element.classList.remove("badge-secondary")
-    element.classList.add("badge-danger");
-}
-
-const addToCart = document.getElementsByClassName("btn-success");
-for (let i = 0; i < addToCart.length; i++) {
-    addToCart[i].addEventListener('click', changeBudgeColor)
-}
-;
-
-
-window.onload = function () {
-
-    let addToCart = document.getElementsByClassName("btn-success");
-
-    for (let i = 0; i < addToCart.length; i++) {
-
-        addToCart.item(i).addEventListener('click', async function (evt) {
-
-            await fetch("/add_to_cart/" + addToCart.item(i).name)
-                .then(product => product.json())
-                .then(valueJson => console.log(valueJson));
-        })
-    }
-
-}
+//
+// function changeBudgeColor() {
+//     let element = document.getElementById("badge");
+//     element.classList.remove("badge-secondary")
+//     element.classList.add("badge-danger");
+// }
+//
+// const addToCart = document.getElementsByClassName("btn-success");
+// for (let i = 0; i < addToCart.length; i++) {
+//     addToCart[i].addEventListener('click', changeBudgeColor)
+// }
+// ;
+//
+//
+// window.onload = function () {
+//
+//     let addToCart = document.getElementsByClassName("btn-success");
+//
+//     for (let i = 0; i < addToCart.length; i++) {
+//
+//         addToCart.item(i).addEventListener('click', async function (evt) {
+//
+//             await fetch("/add_to_cart/" + addToCart.item(i).name)
+//                 .then(product => product.json())
+//                 .then(valueJson => console.log(valueJson));
+//         })
+//     }
+//
+// }
 
 
