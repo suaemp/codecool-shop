@@ -37,7 +37,8 @@
                                             <div class="row">
                                                 <div class="col-md-5 product-name">
                                                     <div class="product-name">
-                                                        <a href="#" th:text="${productWithQuantity.key.name}">Product name</a>
+                                                        <a href="#" th:text="${productWithQuantity.key.name}">Product
+                                                            name</a>
                                                         <div class="product-info">
                                                             <div>Product category: <span class="value"
                                                                                          th:text="${productWithQuantity.key.productCategory.name}">Apple</span>
@@ -49,9 +50,14 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3 quantity">
-                                                    <label for="quantity">Quantity:</label>
-                                                    <input id="quantity" type="number" value="1" th:value="${productWithQuantity.value}"
-                                                           class="form-control quantity-input">
+                                                    <label th:for="'quantity'+${productWithQuantity.key.id}">Quantity:</label>
+                                                    <input id="quantity"
+                                                           type="number" value="1"
+                                                           th:value="${productWithQuantity.value}"
+                                                           class="form-control quantity-input quantityOfOrder">
+
+                                                    <input type="hidden" id="productID"
+                                                           th:value="${productWithQuantity.key.id}">
                                                 </div>
 
                                                 <div class="col-md-4 price">
@@ -72,7 +78,7 @@
                             <h3>Summary</h3>
                             <div class="summary-item">
                                 <span class="text">Subtotal: </span>
-                                <span class="price" th:text="${sum} + ' USD'">$360</span>
+                                <span id="subtotal" class="price" th:text="${sum} + ' USD'">$360</span>
                             </div>
                             <div class="summary-item">
                                 <span class="text">Discount</span>
@@ -91,6 +97,7 @@
     </section>
 </main>
 <div th:replace="footer.html :: copy"></div>
+<script type="module" src="/js/nowy.js" defer></script>
 </body>
 
 </html>

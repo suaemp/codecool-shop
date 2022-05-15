@@ -42,4 +42,11 @@ public class Order {
     }
 
 
+    public void update(int productId, int newQuantity) {
+        for (Product product : customerOrder.keySet()) {
+            if(product.getId() == productId) {
+                customerOrder.put(product, newQuantity);
+            }
+        }
+    }
 }
