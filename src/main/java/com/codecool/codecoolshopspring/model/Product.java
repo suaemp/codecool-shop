@@ -1,9 +1,6 @@
 package com.codecool.codecoolshopspring.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.IdClass;
@@ -12,6 +9,7 @@ import java.math.BigDecimal;
 import java.util.Currency;
 
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
 @Entity
 public class Product extends BaseModel {
@@ -28,10 +26,6 @@ public class Product extends BaseModel {
         this.setPrice(defaultPrice, currencyString);
         this.setSupplier(supplier);
         this.setProductCategory(productCategory);
-    }
-
-    public Product() {
-
     }
 
     public String getPrice() {

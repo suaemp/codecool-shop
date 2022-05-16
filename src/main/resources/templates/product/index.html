@@ -30,7 +30,7 @@
           type="text/css"/>
 
     <link rel="stylesheet" type="text/css" href="css/custom.css"/>
-    <script type="module" src="/js/util.js" defer></script>
+    <script type="module" src="./js/add_to_cart.js" defer></script>
 
 </head>
 
@@ -38,9 +38,9 @@
 
 <header class="jumbotron text-center">
     <h1>Codecool Shop</h1>
-    <a th:href="@{'/shoppingCart'}" id="shopping-cart"><img
-            src="../../img/shopping-cart.png"><span
-            class="badge badge-secondary" id="badge"><span th:text="${cartSize}" class="badge-value">4</span></span></a>
+    <a th:href="@{'/shoppingCart'}" id="shopping-cart">
+        <img src="../../img/shopping-cart.png">
+        <span class="badge badge-secondary" id="badge"><span th:text="${cartSize}" class="badge-value">4</span></span></a>
 </header>
 
 <div class="container">
@@ -78,14 +78,13 @@
                     </div>
                     <div class="card-text">
                         <button class="btn btn-success" id="add-to-cart" th:name="${prod.id}">Add to cart</button>
-<!--                                                <a class="btn btn-success" id="add-to-cart"-->
-<!--                                                   th:href="@{'/add_to_cart/' +${prod.id}}" th:name="${prod.id}">Add to cart</a>-->
+                        <!--                                                <a class="btn btn-success" id="add-to-cart"-->
+                        <!--                                                   th:href="@{'/add_to_cart/' +${prod.id}}" th:name="${prod.id}">Add to cart</a>-->
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <button id="nowyButton">TUTAJ</button>
 </div>
 
 <div th:replace="footer.html :: copy"></div>
