@@ -56,9 +56,9 @@ public class ProductController {
         model.addAttribute("suppliers", service.getAllSuppliers());
         model.addAttribute("products", service.getAllProductsBySupplier(supplier));
 
-        int shoppingCartSize = orderService.getOrder(1).getShoppingCartSize();
-        System.out.println(shoppingCartSize + "wielkość koszyka");
-        model.addAttribute("cartSize", shoppingCartSize);
+//        int shoppingCartSize = orderService.getOrder(1).getShoppingCartSize();
+//
+//        model.addAttribute("cartSize", shoppingCartSize);
 
         return "product/filteredProducts";
     }
