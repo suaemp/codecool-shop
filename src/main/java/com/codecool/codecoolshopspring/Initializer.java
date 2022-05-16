@@ -7,7 +7,7 @@ import com.codecool.codecoolshopspring.repository.SupplierRepository;
 import com.codecool.codecoolshopspring.model.Product;
 import com.codecool.codecoolshopspring.model.ProductCategory;
 import com.codecool.codecoolshopspring.model.Supplier;
-import com.codecool.codecoolshopspring.repository.implementation.OrderRepository;
+import com.codecool.codecoolshopspring.repository.implementation.OrderRepositoryMem;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -19,9 +19,9 @@ public class Initializer {
     private final ProductRepository productRepository;
     private final ProductCategoryRepository productCategoryRepository;
     private final SupplierRepository supplierRepository;
-    private OrderRepository orderRepository;
+    private OrderRepositoryMem orderRepository;
 
-    public Initializer(ProductRepository productRepository, ProductCategoryRepository productCategoryRepository, SupplierRepository supplierRepository, OrderRepository orderRepository) {
+    public Initializer(ProductRepository productRepository, ProductCategoryRepository productCategoryRepository, SupplierRepository supplierRepository, OrderRepositoryMem orderRepository) {
         this.productRepository = productRepository;
         this.productCategoryRepository = productCategoryRepository;
         this.supplierRepository = supplierRepository;

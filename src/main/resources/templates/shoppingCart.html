@@ -26,38 +26,44 @@
                 <div class="row">
                     <div class="col-md-12 col-lg-8">
                         <div class="items">
-                            <div class="product" th:each="product: ${order}">
+                            <div class="product" th:each="productWithQuantity: ${order}">
                                 <div class="row">
                                     <div class="col-md-3">
                                         <img class="img-fluid mx-auto d-block image" id="cart-product-img"
-                                             th:src="@{'../../img/product_' + ${product.id} + '.jpg'}">
+                                             th:src="@{'../../img/product_' + ${productWithQuantity.key.id} + '.jpg'}">
                                     </div>
                                     <div class="col-md-8">
                                         <div class="info">
                                             <div class="row">
                                                 <div class="col-md-5 product-name">
                                                     <div class="product-name">
-                                                        <a href="#" th:text="${product.name}">Product name</a>
+                                                        <a href="#" th:text="${productWithQuantity.key.name}">Product
+                                                            name</a>
                                                         <div class="product-info">
                                                             <div>Product category: <span class="value"
-                                                                                         th:text="${product.productCategory.name}">Apple</span>
+                                                                                         th:text="${productWithQuantity.key.productCategory.name}">Apple</span>
                                                             </div>
                                                             <div>Supplier: <span class="value"
-                                                                                 th:text="${product.supplier.name}">tablet</span>
+                                                                                 th:text="${productWithQuantity.key.supplier.name}">tablet</span>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3 quantity">
-                                                    <label for="quantity">Quantity:</label>
-                                                    <input id="quantity" type="number" value="1"
-                                                           class="form-control quantity-input">
+                                                    <label th:for="'quantity'+${productWithQuantity.key.id}">Quantity:</label>
+                                                    <input id="quantity"
+                                                           type="number" value="1"
+                                                           th:value="${productWithQuantity.value}"
+                                                           class="form-control quantity-input quantityOfOrder">
+
+                                                    <input type="hidden" id="productID"
+                                                           th:value="${productWithQuantity.key.id}">
                                                 </div>
 
                                                 <div class="col-md-4 price">
                                                     <span class="quantity" style="display: inline">Price:</span>
                                                     <span class="price-value" style="display: inline-block"
-                                                          th:text="${product.getPrice()}">$120</span>
+                                                          th:text="${productWithQuantity.key.getPrice()}">$120</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -72,7 +78,7 @@
                             <h3>Summary</h3>
                             <div class="summary-item">
                                 <span class="text">Subtotal: </span>
-                                <span class="price" th:text="${sum} + ' USD'">$360</span>
+                                <span id="subtotal" class="price" th:text="${sum} + ' USD'">$360</span>
                             </div>
                             <div class="summary-item">
                                 <span class="text">Discount</span>
@@ -80,7 +86,7 @@
                             </div>
                             <div class="summary-item"><span class="text">Shipping</span><span class="price">0 USD</span>
                             </div>
-                            <div class="summary-item"><span class="text">Total</span><span class="price">360 USD</span>
+                            <div class="summary-item"><span class="text">Total: </span><span class="price" th:text="${sum} + ' USD'">$360</span>
                             </div>
                             <a th:href="@{'/checkout'}" class="btn btn-primary btn-lg btn-block">Checkout</a>
                         </div>
@@ -91,6 +97,7 @@
     </section>
 </main>
 <div th:replace="footer.html :: copy"></div>
+<script type="module" src="/js/util.js" defer></script>
 </body>
 
 </html>

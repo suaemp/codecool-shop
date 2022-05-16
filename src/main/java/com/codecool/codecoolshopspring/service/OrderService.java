@@ -1,25 +1,26 @@
 package com.codecool.codecoolshopspring.service;
 
 import com.codecool.codecoolshopspring.model.Order;
-import com.codecool.codecoolshopspring.model.Product;
-import com.codecool.codecoolshopspring.repository.implementation.OrderRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.codecool.codecoolshopspring.repository.implementation.OrderRepositoryMem;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
+import java.math.BigDecimal;
 
 @Component
+@AllArgsConstructor
 public class OrderService {
-    private OrderRepository orderRepository;
-
-    @Autowired
-    public OrderService(OrderRepository orderRepository) {
-        this.orderRepository = orderRepository;
-    }
+    private final OrderRepositoryMem orderRepository;
 
     public Order getOrder(int id) {
         return orderRepository.findById(id).orElseThrow();
     }
 
+    public BigDecimal updatedOrder(int i, int productId, int newQuantity) {
+       Order order =  orderRepository.findById(i).orElseThrow();
 
+       order.update(productId, newQuantity);
+
+        return order.amountOfOrder();
+    }
 }

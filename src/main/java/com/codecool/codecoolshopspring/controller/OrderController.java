@@ -26,31 +26,31 @@ public class OrderController {
 
     @GetMapping("/shoppingCart")
     public String addToCart(Model model) {
-        model.addAttribute("order", orderService.getOrder(1).getShoppingCartProducts());
+        model.addAttribute("order", orderService.getOrder(1).getCustomerOrder());
 
         BigDecimal totalOrderAmount = orderService.getOrder(1).amountOfOrder();
         model.addAttribute("sum", totalOrderAmount);
 
-        return "shoppingCart.html";
+        return "shoppingCart";
     }
 
     @GetMapping("/checkout")
     public String checkoutPage(Model model) {
-        int orderId = orderService.getOrder(1).getId();
-        model.addAttribute("customerData", new CustomerOrderData(orderId));
+        model.addAttribute("customerData", new CustomerOrderData());
 
-        return "checkout.html";
+        return "checkout";
     }
 
-    @PostMapping("/add_customer_details")
+    @PostMapping("/checkout")
     public String addCustomerDetails(@ModelAttribute CustomerOrderData customerData) {
         customerOrderService.addCustomerDetails(customerData);
-//        System.out.println(customerOrderService);
-        return "redirect:/";
+
+        return "redirect:payment";
     }
 
     @GetMapping("/payment")
     public String paymentPage() {
-        return "payment.html";
+        System.out.println(customerOrderService.findAll());
+        return "payment";
     }
 }
