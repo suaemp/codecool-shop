@@ -1,20 +1,24 @@
 package com.codecool.codecoolshopspring.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
+import javax.persistence.Entity;
+import javax.persistence.IdClass;
+import javax.persistence.Transient;
 import java.math.BigDecimal;
 import java.util.Currency;
 
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
+@Entity
 public class Product extends BaseModel {
 
     private BigDecimal defaultPrice;
     private Currency defaultCurrency;
+    @Transient
     private ProductCategory productCategory;
+    @Transient
     private Supplier supplier;
 
     public Product(String name, BigDecimal defaultPrice, String currencyString, String description, ProductCategory productCategory, Supplier supplier) {

@@ -4,13 +4,23 @@ package com.codecool.codecoolshopspring.model;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 import java.lang.reflect.Field;
 
 
 @Data
 @NoArgsConstructor
+@MappedSuperclass
 public class BaseModel {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected int id;
+
+
     protected String name;
     protected String description;
 
