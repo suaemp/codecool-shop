@@ -26,14 +26,18 @@
     <!-- End of Bootstrap components -->
 
     <link rel="stylesheet" type="text/css" href="../../css/custom.css"/>
+    <script type="module" src="/js/add_to_cart.js" defer></script>
 
 </head>
 <body>
 <header class="jumbotron text-center">
     <a href="/"><h1>Codecool Shop</h1></a>
-    <a th:href="@{'/shoppingCart'}" id="shopping-cart" onmouseover="showModalWindow(this)"><img
-            src="../../img/shopping-cart.png"><span
-            class="badge badge-secondary" id="badge"><span th:text="${cartSize}" class="badge-value">4</span></span></a>
+    <a th:href="@{'/shoppingCart'}" id="shopping-cart">
+        <img src="../../img/shopping-cart.png">
+        <span class="badge badge-secondary" id="badge">
+            <span th:text="${cartSize}" class="badge-value">4</span>
+        </span>
+    </a>
 </header>
 
 <div class="container">
@@ -70,8 +74,7 @@
                         <p class="lead" th:text="${prod.getPrice()}">100 USD</p>
                     </div>
                     <div class="card-text">
-                        <a class="btn btn-success" id="add-to-cart"
-                           th:href="@{'/add_to_cart/' +${prod.id}}">Add to cart</a>
+                        <button class="btn btn-success" id="add-to-cart" th:name="${prod.id}">Add to cart</button>
                     </div>
                 </div>
             </div>

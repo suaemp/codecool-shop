@@ -226,7 +226,7 @@ header.jumbotron {
 
 #shopping-cart {
     display: block;
-    float: right
+    margin: 10px auto 0 auto;
 }
 
 .wrapper {
