@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class ProductService{
+public class ProductService {
     private final ProductRepository productRepository;
     private final ProductCategoryRepository productCategoryRepository;
     private final SupplierRepository supplierRepository;
@@ -25,11 +25,11 @@ public class ProductService{
         this.supplierRepository = supplierRepository;
     }
 
-    public ProductCategory getProductCategory(int categoryId){
+    public ProductCategory getProductCategory(int categoryId) {
         return productCategoryRepository.find(categoryId).orElseThrow();
     }
 
-    public List<Product> getProductsForCategory(int categoryId){
+    public List<Product> getProductsForCategory(int categoryId) {
         ProductCategory category = productCategoryRepository.find(categoryId).orElseThrow();
         return productRepository.findAllByProductCategory(category);
     }
@@ -55,9 +55,13 @@ public class ProductService{
         return supplierRepository.findById(supplierId).orElseThrow();
     }
 
-    public Product getProductById(int productId) {
-        return productRepository.findById(productId).orElseThrow();
+    public Product getProductById(int productID) {
+        return productRepository.findById(productID).orElseThrow();
 
+    }
+
+    public void deleteProduct(int productID) {
+      productRepository.deleteById(productID);
     }
 
 

@@ -1,22 +1,3 @@
-// function changeQuantity() {
-//     let input = document.getElementById("quantity");
-//     console.log(input);
-//     let hiddenInput = document.getElementById("productID");
-// // let input = document.getElementsByClassName("quantityOfOrder");
-//
-//     input.addEventListener('input', function (evt) {
-//         console.log(this.value);
-//         console.log(hiddenInput.value);
-//
-//         fetch("/add_quantity/" + hiddenInput.value + '/' + this.value)
-//             .then(restReturnedValue => restReturnedValue.json())
-//             .then(valueJson => {
-//                 let subtotal = document.getElementById("subtotal");
-//                 subtotal.innerHTML = valueJson;
-//             })
-//     })
-// }
-
 function changeCartSizeValueInBadge() {
     let badgeElement = document.getElementById("badge");
     changeBadgeColor(badgeElement);
@@ -49,7 +30,6 @@ function addingToCart() {
 
             fetch("/add_to_cart/" + addToCart.item(i).name)
                 .then(product => product.json())
-                .then(valueJson => console.log(valueJson));
 
         })
 

@@ -49,4 +49,9 @@ public class Order {
             }
         }
     }
+
+
+    public void removeProduct(Product product) {
+        customerOrder.remove(product);
+    }
 }
