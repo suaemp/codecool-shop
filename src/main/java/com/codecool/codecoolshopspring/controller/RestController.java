@@ -55,12 +55,11 @@ public class RestController {
     }
 
     @GetMapping("/delete/{productID}")
-    public Map<Product, Integer> removeProductFromCart(@PathVariable int productID) {
-        System.out.println("usuwamy");
+    public void removeProductFromCart(@PathVariable int productID) {
+//        TODO: return order list
         Product productToDelete = service.getProductById(productID);
         orderService.getOrder(1).removeProduct(productToDelete);
 
-        return orderService.getOrder(1).getCustomerOrder();
     }
 
 }
