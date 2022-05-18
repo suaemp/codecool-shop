@@ -22,9 +22,12 @@ function deleteItem() {
     for (let i = 0; i < deleteButtons.length; i++) {
         deleteButtons[i].addEventListener('click', function (evt)
         {
-            fetch("/delete/" + deleteButtons[i].name)
-                .then(restReturnedOrder => restReturnedOrder.json())
-                .then(valueJson => console.log(valueJson))
+            fetch("/delete/" + deleteButtons[i].name);
+            let buttonToDelete = document.getElementById(deleteButtons[i].name);
+            buttonToDelete.style.display = "none";
+
+
+
 
         })
     }

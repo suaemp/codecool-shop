@@ -26,11 +26,11 @@ public class ProductService {
     }
 
     public ProductCategory getProductCategory(int categoryId) {
-        return productCategoryRepository.find(categoryId).orElseThrow();
+        return productCategoryRepository.findById(categoryId).orElseThrow();
     }
 
     public List<Product> getProductsForCategory(int categoryId) {
-        ProductCategory category = productCategoryRepository.find(categoryId).orElseThrow();
+        ProductCategory category = productCategoryRepository.findById(categoryId).orElseThrow();
         return productRepository.findAllByProductCategory(category);
     }
 

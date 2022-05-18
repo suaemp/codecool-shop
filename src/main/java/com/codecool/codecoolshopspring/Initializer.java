@@ -50,11 +50,11 @@ public class Initializer {
         productRepository.save(product);
         productRepository.save(new Product("Lenovo IdeaPad Miix 700", new BigDecimal("479"), "USD", "Keyboard cover is included. Fanless Core m5 processor. Full-size USB ports. Adjustable kickstand.", tablet, lenovo));
         productRepository.save(new Product("Amazon Fire HD 8", new BigDecimal("89"), "USD", "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", tablet, amazon));
-        productRepository.save(new Product("Macbook Pro", new BigDecimal("500"), "USD", "The MacBook Pro is a line of Macintosh notebook computers by by Apple Inc. Introduced in January 2006, it is the higher-end model of the MacBook family, sitting above the consumer-focused MacBook Air. It is currently sold with 13-inch, 14-inch, and 16-inch screens, all using variants of the Apple-designed M1 system on a chip.", laptop, apple));
+        productRepository.save(new Product("Macbook Pro", new BigDecimal("500"), "USD", "The MacBook Pro is a line of Macintosh notebook computers by by Apple Inc. ", laptop, apple));
 
         Order order = new Order(1);
 
-        order.addToCart(product);
+//        order.addToCart(product);
         orderRepository.save(order);
     }
 }

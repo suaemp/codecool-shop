@@ -2,9 +2,7 @@ package com.codecool.codecoolshopspring.model;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.IdClass;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Currency;
 
@@ -16,9 +14,10 @@ public class Product extends BaseModel {
 
     private BigDecimal defaultPrice;
     private Currency defaultCurrency;
-    @Transient
+    @ManyToOne
     private ProductCategory productCategory;
-    @Transient
+    @ManyToOne
+    @JoinColumn(name = "product_supplier_id")
     private Supplier supplier;
 
     public Product(String name, BigDecimal defaultPrice, String currencyString, String description, ProductCategory productCategory, Supplier supplier) {

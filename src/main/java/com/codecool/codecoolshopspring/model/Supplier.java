@@ -1,9 +1,15 @@
 package com.codecool.codecoolshopspring.model;
 
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-
+@NoArgsConstructor
+@Entity
 public class Supplier extends BaseModel {
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "product_supplier_id")
     private List<Product> products;
 
     public Supplier(String name, String description) {
