@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 public class CustomerOrderRepositoryMem implements CustomerOrderRepository {
-    private static List<CustomerOrderData> customerDetails = new ArrayList<>();
+    private static final List<CustomerOrderData> customerDetails = new ArrayList<>();
 
     @Override
     public void saveUserData(CustomerOrderData customerData) {

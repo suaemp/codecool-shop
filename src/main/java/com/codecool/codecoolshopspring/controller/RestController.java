@@ -52,4 +52,11 @@ public class RestController {
         return orderDTO.getShoppingCartSize();
     }
 
+    @GetMapping("/delete/{productID}")
+    public void removeProductFromCart(@PathVariable int productID) {
+
+        Product productToDelete = service.getProductById(productID);
+        orderService.getOrder(1).removeProduct(productToDelete);
+    }
+
 }

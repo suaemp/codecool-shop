@@ -1,7 +1,7 @@
 package com.codecool.codecoolshopspring.service;
 
 import com.codecool.codecoolshopspring.model.CustomerOrderData;
-import com.codecool.codecoolshopspring.repository.implementation.CustomerOrderRepositoryMem;
+import com.codecool.codecoolshopspring.repository.CustomerOrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,11 +11,11 @@ import java.util.Random;
 @Service
 public class CustomerOrderService {
 
-    private final CustomerOrderRepositoryMem customerOrderRepository;
+    private final CustomerOrderRepository customerOrderRepository;
 
 
     @Autowired
-    public CustomerOrderService(CustomerOrderRepositoryMem customerOrderRepository) {
+    public CustomerOrderService(CustomerOrderRepository customerOrderRepository) {
         this.customerOrderRepository = customerOrderRepository;
 
     }

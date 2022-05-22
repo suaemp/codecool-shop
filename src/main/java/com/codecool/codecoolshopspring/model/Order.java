@@ -29,7 +29,7 @@ public class Order {
     }
 
     public int getShoppingCartSize() {
-        return customerOrder.values().stream().mapToInt(quantity -> quantity).sum();
+        return customerOrder.values().stream().mapToInt(quantity -> quantity).sum() + 1;
     }
 
     public BigDecimal amountOfOrder() {
@@ -44,9 +44,14 @@ public class Order {
 
     public void update(int productId, int newQuantity) {
         for (Product product : customerOrder.keySet()) {
-            if(product.getId() == productId) {
+            if (product.getId() == productId) {
                 customerOrder.put(product, newQuantity);
             }
         }
+    }
+
+
+    public void removeProduct(Product product) {
+        customerOrder.remove(product);
     }
 }

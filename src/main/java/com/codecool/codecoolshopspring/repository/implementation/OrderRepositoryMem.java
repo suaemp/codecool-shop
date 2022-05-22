@@ -1,6 +1,7 @@
 package com.codecool.codecoolshopspring.repository.implementation;
 
 import com.codecool.codecoolshopspring.model.Order;
+import com.codecool.codecoolshopspring.model.Product;
 import com.codecool.codecoolshopspring.repository.OrderRepository;
 import org.springframework.stereotype.Component;
 
@@ -28,6 +29,7 @@ public class OrderRepositoryMem implements OrderRepository {
         order.setId(orders.size() + 1);
         orders.add(order);
     }
+
 
 
 }

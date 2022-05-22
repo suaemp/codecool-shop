@@ -1,16 +1,12 @@
 package com.codecool.codecoolshopspring.repository;
 
 import com.codecool.codecoolshopspring.model.ProductCategory;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.List;
-import java.util.Optional;
 
-public interface ProductCategoryRepository {
+@Repository
+public interface ProductCategoryRepository extends JpaRepository<ProductCategory, Integer> {
 
-    List<ProductCategory> findAll();
-    Optional<ProductCategory> find(int id);
-
-    void save(ProductCategory category);
-    void deleteById(int id);
 
 }
