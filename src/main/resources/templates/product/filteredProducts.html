@@ -30,60 +30,53 @@
 
 </head>
 <body>
-<header class="jumbotron text-center">
-    <a href="/"><h1>Codecool Shop</h1></a>
-    <a th:href="@{'/shoppingCart'}" id="shopping-cart">
-        <img src="../../img/shopping-cart.png">
-        <span class="badge badge-secondary" id="badge">
-            <span th:text="${cartSize}" class="badge-value">4</span>
-        </span>
-    </a>
-</header>
+<div th:replace="header.html :: copy"></div>
 
-<div class="container">
-    <div>
-        <div class="card-header" th:text="${categoryName} ?: 'PRODUCT CATEGORIES'">PRODUCT CATEGORIES</div>
-
-        <div class="list-group" th:each="category: ${categories}">
-            <a th:href="@{'/products/' + ${category.id}}" class="list-group-item list-group-item-action"
-               th:text="${category.name}+'s'">
-                Category name
-            </a>
-        </div>
-
-        <div class="card-header" th:text="${supplierName} ?: 'PRODUCT SUPPLIERS'">PRODUCT SUPPLIERS</div>
-        <div class="list-group" th:each="supplier: ${suppliers}">
-            <a th:href="@{'/products/'+${supplier.name} +'/'+ ${supplier.id}}"
-               class="list-group-item list-group-item-action"
-               th:text="${supplier.name}">
-                Category name
-            </a>
-        </div>
-    </div>
-
+<div class="container-fluid">
     <div id="products" class="row">
-        <div class="col col-sm-12 col-md-6 col-lg-4" th:each="prod,iterStat : ${products}">
-            <div class="card">
-                <img class="" th:src="@{'../../img/product_' + ${prod.id} + '.jpg'}" alt=""/>
-                <div class="card-header">
-                    <h4 class="card-title" th:text="${prod.name}">Product name</h4>
-                    <p class="card-text" th:text="${prod.description}">Product description... </p>
-                </div>
-                <div class="card-body">
-                    <div class="card-text">
-                        <p class="lead" th:text="${prod.getPrice()}">100 USD</p>
+
+        <div class="col-lg-3 col-sm-12">
+            <div class="card-header" th:text="${categoryName} ?: 'PRODUCT CATEGORIES'">PRODUCT CATEGORIES</div>
+            <div class="list-group" th:each="category: ${categories}">
+                <a th:href="@{'/products/' + ${category.id}}" class="list-group-item list-group-item-action"
+                   th:text="${category.name}+'s'">
+                    Category name
+                </a>
+            </div>
+
+            <div class="card-header" th:text="${supplierName} ?: 'PRODUCT SUPPLIERS'">PRODUCT SUPPLIERS</div>
+            <div class="list-group" th:each="supplier: ${suppliers}">
+                <a th:href="@{'/products/'+${supplier.name} +'/'+ ${supplier.id}}"
+                   class="list-group-item list-group-item-action"
+                   th:text="${supplier.name}">
+                    Category name
+                </a>
+            </div>
+        </div>
+        <div class="container col-lg-9 col-sm-12" style="display: contents!important;">
+
+            <div class="col col-sm-12 col-md-3 col-lg-3" th:each="prod,iterStat : ${products}">
+                <div class="card">
+                    <img class="" th:src="@{'../../img/product_' + ${prod.id} + '.jpg'}" alt=""/>
+                    <div class="card-header">
+                        <h4 class="card-title" th:text="${prod.name}">Product name</h4>
+                        <p class="card-text" th:text="${prod.description}">Product description... </p>
                     </div>
-                    <div class="card-text">
-                        <button class="btn btn-success" id="add-to-cart" th:name="${prod.id}">Add to cart</button>
+                    <div class="card-body">
+                        <div class="card-text">
+                            <p class="lead" th:text="${prod.getPrice()}">100 USD</p>
+                        </div>
+                        <div class="card-text">
+                            <button class="btn btn-success" id="add-to-cart" th:name="${prod.id}">Add to cart</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 
-</div>
-
-<div th:replace="footer.html :: copy"></div>
+    <div th:replace="footer.html :: copy"></div>
 
 </body>
 </html>

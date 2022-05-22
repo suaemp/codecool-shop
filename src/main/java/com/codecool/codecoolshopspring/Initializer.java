@@ -45,7 +45,6 @@ public class Initializer {
         productCategoryRepository.save(laptop);
 
         //setting up products and printing it
-//        Product product = productRepository.save(new Product("Amazon Fire", new BigDecimal("49.9"), "USD", "Fantastic price. Large content ecosystem. Good parental controls. Helpful technical support.", tablet, amazon));
         Product product = new Product("Amazon Fire", new BigDecimal("49.9"), "USD", "Fantastic price. Large content ecosystem. Good parental controls. Helpful technical support.", tablet, amazon);
         productRepository.save(product);
         productRepository.save(new Product("Lenovo IdeaPad Miix 700", new BigDecimal("479"), "USD", "Keyboard cover is included. Fanless Core m5 processor. Full-size USB ports. Adjustable kickstand.", tablet, lenovo));
@@ -54,7 +53,6 @@ public class Initializer {
 
         Order order = new Order(1);
 
-//        order.addToCart(product);
         orderRepository.save(order);
     }
 }

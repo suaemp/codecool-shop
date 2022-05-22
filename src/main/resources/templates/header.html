@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<header th:fragment="copy" class="jumbotron text-center">
+    <a href="/"><h1>Codecool Shop</h1></a>
+    <a th:href="@{'/shoppingCart'}" id="shopping-cart">
+        <img src="../../img/shopping-cart.png">
+        <span class="badge badge-secondary" id="badge">
+            <span th:text="${cartSize}" class="badge-value">4</span>
+        </span>
+    </a>
+</header>
+
+</body>
+</html>

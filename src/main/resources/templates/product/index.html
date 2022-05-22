@@ -36,30 +36,23 @@
 
 <body>
 
-<header class="jumbotron text-center">
-    <a href="/"><h1>Codecool Shop</h1></a>
-    <a th:href="@{'/shoppingCart'}" id="shopping-cart">
-        <img src="../../img/shopping-cart.png">
-        <span class="badge badge-secondary" id="badge">
-            <span th:text="${cartSize}" class="badge-value">4</span>
-        </span>
-    </a>
-</header>
+<div th:replace="header.html :: copy"></div>
 
 <div class="container-fluid">
     <div id="products" class="row">
 
         <div class="col-lg-3 col-sm-12">
-            <div class="card-header">PRODUCT CATEGORIES</div>
-            <div class="list-group" th:each="category: ${categories}">
-                <a th:href="@{'/products/' + ${category.id}}" class="list-group-item list-group-item-action"
-                   th:text="${category.name}+'s'">
+            <div class="card-header" th:text="${supplierName} ?: 'PRODUCT SUPPLIERS'">PRODUCT SUPPLIERS</div>
+            <div class="list-group" th:each="supplier: ${suppliers}">
+                <a th:href="@{'/products/'+${supplier.name} +'/'+ ${supplier.id}}"
+                   class="list-group-item list-group-item-action"
+                   th:text="${supplier.name}">
                     Category name
                 </a>
             </div>
 
 
-            <div class="card-header">PRODUCT SUPPLIERS</div>
+            <div class="card-header" th:text="${supplierName} ?: 'PRODUCT SUPPLIERS'">PRODUCT SUPPLIERS</div>
             <div class="list-group" th:each="supplier: ${suppliers}">
                 <a th:href="@{'/products/'+${supplier.name} +'/'+ ${supplier.id}}"
                    class="list-group-item list-group-item-action"
@@ -89,7 +82,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 

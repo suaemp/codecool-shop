@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.math.BigDecimal;
-import java.util.Map;
 
 
 @org.springframework.web.bind.annotation.RestController
@@ -55,7 +54,7 @@ public class RestController {
 
     @GetMapping("/delete/{productID}")
     public void removeProductFromCart(@PathVariable int productID) {
-//        TODO: return order list
+
         Product productToDelete = service.getProductById(productID);
         orderService.getOrder(1).removeProduct(productToDelete);
     }
